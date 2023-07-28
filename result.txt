@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>all books</title>
+        
+        
+    </head>
+    <body>
+        <div>
+         
+    
+        <a href="/books/harry-potter-1"><h1>harry potter 1 (rating:2)</h1></a>
+        
+    
+        <a href="/books/harry-potter-2"><h1>harry potter 2 (rating:3)</h1></a>
+        
+    
+        <a href="/books/harry-potter-4"><h1>harry potter 4 (rating:5)</h1></a>
+        
+    
+
+
+    </body>
+</html>
