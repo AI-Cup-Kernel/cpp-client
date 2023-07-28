@@ -1,11 +1,12 @@
 #include <iostream>
+
 #include <string>
 #include <map>
 #include <winsock2.h>
 #include <sstream>
 #include <chrono>
-#include "MainProgram.h"
 #include "requests.h"
+#include "MainProgram.h"
 #pragma comment(lib, "ws2_32.lib")
 
 const int PORT = 8080;//set the port here
@@ -22,7 +23,7 @@ std::string handleGetRequest(const std::string& url) {
 
 int main() {
     // Initialize Winsock
-    std::cout<<requestToHost("https://google.com");
+    std::cout<<request("https://google.com");
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "WSAStartup failed." << std::endl;
