@@ -1,5 +1,4 @@
 #include "GameHandeler.h"
-#include "requests.h"
 httplib::Server* server; 
 void handleYourTurn(const httplib::Request& req, httplib::Response& res) {
 	YourTurn();
