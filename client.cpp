@@ -5,8 +5,8 @@
 #include <winsock2.h>
 #include <sstream>
 #include <chrono>
-#include "MainProgram.h"
-#include "GameHandeler.h"
+#include "resources/MainProgram.h"
+#include "resources/GameHandeler.h"
 #pragma comment(lib, "ws2_32.lib")
 
 const int PORT = 8080;//set the port here

@@ -11,9 +11,9 @@
 #include <utility>
 #include <fstream>
 #include <sstream>
-#include "json.hpp"
+#include "../externals/json.hpp"
 #include "MainProgram.h"
-#include "httplib.h"
+#include "../externals/httplib.h"
 using namespace nlohmann;
 
 
