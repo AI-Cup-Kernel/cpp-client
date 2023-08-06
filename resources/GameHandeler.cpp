@@ -1,51 +1,56 @@
-#include "GameHandeler.h"
-httplib::Server* server; 
+httplib::Server* server;
+std::string server_token;
+
+const bool DEBUGMODE = true;
 void handleYourTurn(const httplib::Request& req, httplib::Response& res) {
-	YourTurn();
-	res.set_content("Hello, API!", "text/plain");
+	if (req.headers.find("token")!=req.headers.end()&&req.headers.find("token)")->second == server_token) {
+		YourTurn();
+		res.set_content("my turn!", "text/plain");
+	}
+	else {
+
+	}
 
 }
 GameHandeler::GameHandeler() {
 	this->token = "";
-	this->public_key = "";
 	this->id = -1;
 	this->port = -1;
 	this->host = "127.0.0.1";
 	this->server_thread = nullptr;
+	server_token = this->generateToken();
 }
 GameHandeler::GameHandeler(std::string host) {
 	this->token = "";
-	this->public_key = "";
 	this->id = -1;
 	this->port = -1;
 	this->host = host;
 	this->server_thread = nullptr;
+	server_token = this->generateToken();
 }
 bool GameHandeler::begin() {
 
-	json response = this->request(host.c_str(), "/login", 12345);
+	json response = this->SendloginRequest(this->host);
 	if (response["status"] ) {
 		if (response.find("player_id") == response.end()) {
 
 			return false;
 		}
 		else {
-			this->port = 0;
 			this->port = response["port"].get<int>();
 			this->token = response["token"];
-			this->public_key = response["public_key"];
 			this->id = response["player_id"];
 			this->ready();
 			return true;
 		}
 	}
 }
-std::string GameHandeler::ready() {
+void GameHandeler::ready() {
 	//we could use shared mutex but I didnt want to get in trouble because of c++ various versions
 	std::string message;
 	
 
-	server=this->runServer("127.0.0.1", this->port, {{"/hello",handleYourTurn}});
+	server=this->runServer("127.0.0.1", this->port, {{"/start_turn",handleYourTurn}});
 	//waits untill server is running
 	while (!server->is_running()) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
@@ -53,7 +58,7 @@ std::string GameHandeler::ready() {
 	}
 
 	
-	json response = this->requestWithToken(this->host, "/ready", 12345);
+	json response = this->request(this->host, "/ready", 12345);
 	
 	if (response["status"]) {
 
@@ -63,10 +68,15 @@ std::string GameHandeler::ready() {
 	else {
 		message = "request failed";
 	}
-	std::cout << message;
-	return message;
+	if (DEBUGMODE)
+		std::cout << message<<std::endl;
+	while (true) {
+		//wait for server to get requests
+	}
 
 }
+
+
 int GameHandeler::GetPort() { return this->port; }
 
 httplib::Server* GameHandeler::runServer(const char* host, const int PORT, std::vector<std::pair<std::string, std::function<void(const httplib::Request& req, httplib::Response& res)>>> urls) {
@@ -83,24 +93,27 @@ httplib::Server* GameHandeler::runServer(const char* host, const int PORT, std::
 	
 	return server;
 }
-json GameHandeler::request(std::string url, std::string api, int port  ) {
+json GameHandeler::SendloginRequest(std::string url,int port) {
 	httplib::Client client(url, port);
+	httplib::MultipartFormDataItems items = { {"token",generateToken()} };
 
-	auto res = client.Get(api);
+
+
+	auto res = client.Post("/login", items);
 	json result;
 
 	if (res) {
 		if (res->status == 200) {
+			if (DEBUGMODE)
+				std::cout << "login complete" << std::endl;
 
-			std::cout << res->body;
+
 			result = json::parse(res->body);
-			std::cout << result["port"];
 			result.push_back({ "status",true });
-			std::cout << result["port"];
 			return result;
 		}
 		else {
-		
+
 			result = json::parse(res->body);
 			result.push_back({ "status",false });
 			return result;
@@ -114,27 +127,28 @@ json GameHandeler::request(std::string url, std::string api, int port  ) {
 
 	//will not come to this
 	return result;
-
-
 }
-json GameHandeler::requestWithToken(std::string url, std::string api ,int port ) {
+
+json GameHandeler::request(std::string url,std::string api,int port){
 	httplib::Headers headers;
 	headers.emplace("x-access-token", this->token);
-	httplib::Client client(url,port);
+	httplib::Client client(url, port);
 
-	auto res = client.Get(api,headers);
+	auto res = client.Get(api, headers);
+
 	json result;
 
 	if (res) {
 		
 		if (res->status == 200) {
-			// Print the response body
+
+			if (DEBUGMODE)
+				std::cout << "request sent to "<<api<<"successfully" << std::endl;
 			result = json::parse(res->body);
 			result.push_back({ "status",true });
 			return result;
 		}
 		else {
-			std::cout << res->body;
 			result = json::parse(res->body);
 			result.push_back({ "status",false });
 			return result;
@@ -147,9 +161,7 @@ json GameHandeler::requestWithToken(std::string url, std::string api ,int port )
 	}
 
 	//will not come to this
-	
 	return result;
-
 
 
 }
@@ -159,7 +171,30 @@ void GameHandeler::join() {
 		server_thread->join();
 	}
 }
+
+
+
+std::string GameHandeler::generateToken() {
+	const int otpLength = 32;
+	const std::string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+	std::string otp;
+	std::mt19937 rng(std::time(0));
+	std::uniform_int_distribution<int> dist(0, chars.size() - 1);
+
+	for (int i = 0; i < otpLength; ++i) {
+		otp += chars[dist(rng)];
+	}
+	if(DEBUGMODE)
+		std::cout << "server token: " << otp<<std::endl;
+	return otp;
+	
+
+	
+}
+
 GameHandeler::~GameHandeler() {
 	
 
 }
+
