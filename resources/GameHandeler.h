@@ -18,6 +18,7 @@
 #include "MainProgram.h"
 #include "../externals/httplib.h"
 
+using namespace nlohmann;
 
 using namespace nlohmann;
 
@@ -28,25 +29,16 @@ void handleYourTurn(const httplib::Request& req, httplib::Response& res);
 //there should just be one GamHandeler
 class GameHandeler {
 public:
-	GameHandeler(std::string host);
+	GameHandeler(std::string host,int port);
 	GameHandeler();
 	//initialization function
 	bool begin();
 
 	int GetPort();
+	std::string GetToken();
 
 	void join();
 
-	//in game functions
-	std::map<int, int> getTroopCount();
-	int getTurn();
-	int getState();
-	int getPlayerNumber();
-	bool isReachable(int node1, int node2);
-
-
-
-	//---------------
 
 
 	~GameHandeler();
@@ -74,3 +66,4 @@ private:
 
 
 #endif // !GAMEHANDELER;
+

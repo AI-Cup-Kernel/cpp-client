@@ -7,18 +7,24 @@
 #include <chrono>
 #include "resources/MainProgram.h"
 #include "resources/GameHandeler.h"
+
 #pragma comment(lib, "ws2_32.lib")
 
-const int PORT = 8080;//set the port here
-const std::string response = "salam daaaaash";//set this to the response you want to give if the request reaches your-turn
+const int PORT = 8080;
+const std::string HOST = "127.0.0.1";
 
+extern Game game;
 
 
 int main() {
 	httplib::Headers headers;
 	GameHandeler handeler;
+	game.SetHostsPort(PORT);
+	game.SetHost(HOST);
+	game.SetToken(handeler.GetToken());
 
 	handeler.begin();
+	while (true);//wait or server
 	handeler.join();
 	
    
