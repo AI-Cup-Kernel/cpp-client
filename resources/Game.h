@@ -2,10 +2,10 @@
 #define GAME
 const int NumberOfRegions=43;
 #include <iostream>
-
+#include <string>
 #include <vector>
-#include "../externals/httplib.h"
-#include "../externals/json.hpp"
+#include "../compile/stdafx.h"
+
 using namespace nlohmann;
 class Game {
 public:
@@ -14,19 +14,36 @@ public:
 	void SetHostsPort(int port);
 	void SetHost(std::string host);
 	//requests with ordinary naming
-	std::map<int, int> getTroopCount();
+	int getNumberOfTroopsToPut();
+	bool testServer();
+	std::map<int, std::vector <int>> getAdj();
 	std::map<int, int> getOwners();
-	int getTurn();
+	std::map<int, int> getTroopsCount();
 	int getState();
+	int getTurnNumber();
+	bool nextState();
+	int getPlayerID();
+	std::vector<std::pair<int, int>> getStrategicNodes();
+	bool putOneTroop(int node);
+	bool putTroop(int node, int number_of_troops);
+	bool attack(int origin_node, int target_node, float fraction);
+	bool moveTroops(int origin_node, int dest_node, float number_of_troops);
 	int getPlayerNumber();
-	bool isReachable(int node1, int node2);
+	bool getReachable(int node);
+
+
+	
+
+	
+	
 
 
 private:
 	std::string host;
 	int port;
 	std::string token;
-	json request(std::string url, std::string api, int port = 12345);
+	json get(std::string url, std::string api, int port = 12345);
+	json post(std::string url, std::string api, httplib::MultipartFormDataItems items, int port = 12345);
 
 };
 #endif

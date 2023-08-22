@@ -14,9 +14,10 @@
 #include <random>
 #include <functional>
 #include <map>
-#include "../externals/json.hpp"
+#include "../compile/stdafx.h"
 #include "MainProgram.h"
-#include "../externals/httplib.h"
+
+
 
 using namespace nlohmann;
 
@@ -29,12 +30,16 @@ void handleYourTurn(const httplib::Request& req, httplib::Response& res);
 //there should just be one GamHandeler
 class GameHandeler {
 public:
-	GameHandeler(std::string host,int port);
+	GameHandeler(std::string host,int host_port);
 	GameHandeler();
 	//initialization function
 	bool begin();
+	void ready();
 
 	int GetPort();
+	int GetHostsPort();
+
+
 	std::string GetToken();
 
 	void join();
@@ -46,11 +51,12 @@ public:
 
 
 private:
-	void ready();
+	
 	std::string host;
 	std::string token;
 	int id;
 	int port;
+	int host_port;
 	std::thread* server_thread;
 	httplib::Server* runServer(const char* host, const int PORT, std::vector<std::pair<std::string, std::function<void(const httplib::Request& req, httplib::Response& res)>>> urls);
 	std::string generateToken();

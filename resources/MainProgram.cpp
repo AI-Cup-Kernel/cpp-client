@@ -1,8 +1,23 @@
 #include "MainProgram.h"
 Game game;
-void YourTurn() {
+//write your program for each state here
+void init() {
+	//it will be executed in a new thread when init requestws arrives
+	std::cout << "init has been called" << std::endl;
+	
+}
+void yourTurn() {
+	//it will be executed in a new thread when turn requestws arrives
+	std::cout << "yourTurn has been called" << std::endl;
+	game.getReachable(1);
 
 	
-	std::cout << "hello world";
+	
 
+
+}
+void end() {
+	//it will be executed in a new thread when end requestws arrives
+
+	std::cout << "end has been called" << std::endl;
 }
