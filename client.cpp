@@ -2,7 +2,6 @@
 
 #include <string>
 #include <map>
-#include <winsock2.h>
 #include <sstream>
 #include <chrono>
 #include "resources/MainProgram.h"
@@ -10,21 +9,22 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-const int PORT = 8080;
+const int PORT = 12345;
 const std::string HOST = "127.0.0.1";
 
 extern Game game;
 
 
 int main() {
-	httplib::Headers headers;
-	GameHandeler handeler;
+	
+	GameHandeler handeler(HOST,PORT);
 	game.SetHostsPort(PORT);
 	game.SetHost(HOST);
-	game.SetToken(handeler.GetToken());
-
 	handeler.begin();
+	game.SetToken(handeler.GetToken());
+	handeler.ready();
 	while (true);//wait or server
+	//it will not pass above line but for fuurther development I placed the line below
 	handeler.join();
 	
    
