@@ -4,6 +4,9 @@ std::string server_token;
 std::vector<std::thread> threads;
 
 const bool DEBUGMODE = true;
+bool game_on = true;
+std::mutex game_on_mutex;
+
 void handleYourTurn(const httplib::Request& req, httplib::Response& res) {
 	//executed when turn request has arrived
 	if (req.headers.find("x-access-token") != req.headers.end() 
@@ -43,6 +46,20 @@ void handleEnd(const httplib::Request& req, httplib::Response& res) {
 	}
 
 }
+void handleKill(const httplib::Request& req, httplib::Response& res) {
+	//executed when turn request has arrived
+	if (req.headers.find("x-access-token") != req.headers.end()
+		&& req.headers.find("x-access-token")->second == server_token) {
+		
+		game_on_mutex.lock();
+		game_on = game_on;
+		game_on_mutex.unlock();
+	}
+	else {
+		res.set_content("token missing or wrong", "text/plain");
+
+	}
+}
 GameHandeler::GameHandeler() {
 	//default constructor:)
 	this->token = "";
@@ -52,6 +69,7 @@ GameHandeler::GameHandeler() {
 	this->server_thread = nullptr;
 
 	server_token = this->generateToken();
+	game_on = true;
 }
 GameHandeler::GameHandeler(std::string host,int host_port) {
 	this->token = "";
@@ -61,7 +79,9 @@ GameHandeler::GameHandeler(std::string host,int host_port) {
 	this->host_port = host_port;
 	this->server_thread = nullptr;
 	server_token = this->generateToken();
+	game_on = true;
 }
+
 bool GameHandeler::begin() {
 
 	json response = this->SendloginRequest(this->host,this->host_port);
@@ -88,7 +108,7 @@ void GameHandeler::ready() {
 	std::string message;
 
 	//running server in a new thread
-	server = this->runServer("127.0.0.1", this->port, { {"/turn",handleYourTurn},{"/end",handleEnd},{"/init",handleInit}});
+	server = this->runServer("127.0.0.1", this->port, { {"/turn",handleYourTurn},{"/end",handleEnd},{"/init",handleInit}, {"/kill",handleKill} });
 	//waits untill server is running
 	while (!server->is_running()) {
 		
@@ -115,7 +135,15 @@ void GameHandeler::ready() {
 
 
 int GameHandeler::GetPort() { return this->port; }
+
 int GameHandeler::GetHostsPort() { return this->host_port; }
+bool GameHandeler::GetGameOn() {
+	bool temp;
+	game_on_mutex.lock();
+	temp =game_on;
+	game_on_mutex.unlock();
+	return temp;
+}
 std::string GameHandeler::GetToken() { return this->token; }
 
 httplib::Server* GameHandeler::runServer(const char* host, const int PORT, std::vector<std::pair<std::string, std::function<void(const httplib::Request& req, httplib::Response& res)>>> urls) {

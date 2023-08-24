@@ -1,0 +1,5 @@
+resources/Game.o
+resources/GameHandeler.o
+resources/MainProgram.o
+client.o
+game.exe

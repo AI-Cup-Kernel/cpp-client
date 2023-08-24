@@ -14,11 +14,9 @@
 #include <random>
 #include <functional>
 #include <map>
-#include "../externals/httplib.h"
 #include "../externals/json.hpp"
 #include "MainProgram.h"
-
-
+#include "../externals/httplib.h"
 
 using namespace nlohmann;
 
@@ -27,6 +25,9 @@ using namespace nlohmann;
 
 
 void handleYourTurn(const httplib::Request& req, httplib::Response& res);
+void handleKill(const httplib::Request& req, httplib::Response& res);
+void handleEnd(const httplib::Request& req, httplib::Response& res);
+void handleInit(const httplib::Request& req, httplib::Response& res);
 
 //there should just be one GamHandeler
 class GameHandeler {
@@ -44,6 +45,8 @@ public:
 	std::string GetToken();
 
 	void join();
+	bool GetGameOn();
+	
 
 
 
@@ -52,6 +55,7 @@ public:
 
 
 private:
+
 	
 	std::string host;
 	std::string token;

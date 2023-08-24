@@ -6,7 +6,6 @@ const int NumberOfRegions=43;
 #include <vector>
 #include "../externals/httplib.h"
 #include "../externals/json.hpp"
-
 using namespace nlohmann;
 class Game {
 public:
@@ -30,7 +29,7 @@ public:
 	bool attack(int origin_node, int target_node, float fraction);
 	bool moveTroops(int origin_node, int dest_node, float number_of_troops);
 	int getPlayerNumber();
-	bool getReachable(int node);
+	std::vector<int> getReachable(int node);
 
 
 	

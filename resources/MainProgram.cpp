@@ -9,12 +9,6 @@ void init() {
 void yourTurn() {
 	//it will be executed in a new thread when turn requestws arrives
 	std::cout << "yourTurn has been called" << std::endl;
-	game.getReachable(1);
-
-	
-	
-
-
 }
 void end() {
 	//it will be executed in a new thread when end requestws arrives

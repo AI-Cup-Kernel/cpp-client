@@ -56,7 +56,7 @@ json Game::post(std::string url, std::string api, httplib::MultipartFormDataItem
 
 
 		if (res->status == 200) {
-
+			
 			if (DEBUGMODE)
 				std::cout << "request sent to " << api << " successfully" << std::endl;
 			result = json::parse(res->body);
@@ -91,9 +91,6 @@ int Game::getPlayerNumber() {
 	else {
 		std::cout << "unable to reach";
 	}
-	//will not reach here it is just for not getting warnings
-	return -1;
-
 
 }
 int Game::getNumberOfTroopsToPut() {
@@ -185,8 +182,6 @@ std::map<int, int> Game::getOwners() {
 
 		return owners;
 	}
-	return {};
-
 
 }
 std::map<int, int> Game::getTroopsCount() {
@@ -214,7 +209,6 @@ std::map<int, int> Game::getTroopsCount() {
 
 		return owners;
 	}
-	return {};
 
 }
 int Game::getState() {
@@ -355,19 +349,18 @@ bool Game::moveTroops(int origin_node, int dest_node, float number_of_troops) {
 		std::cout << "move troops:" << response["error"] << std::endl;
 	return false;
 }
-bool Game::getReachable(int node) {
+std::vector<int> Game::getReachable(int node) {
 	//posting data to server
 	auto response = post(this->host, "/get_reachable", { {"node_id",std::to_string(node).c_str()},},  this->port);
 	if (response["status"] ) {
-		if (DEBUGMODE)
-			std::cout << "get reachable:" << response["message"] << std::endl;
-		return response["reachable"].get<bool>();
+		
+		return response["reachable"];
 
 
 	}
 	if (DEBUGMODE)
 		std::cout << "get reachable:" << response["error"] << std::endl;
-	return false;
+	return {};
 
 
 }

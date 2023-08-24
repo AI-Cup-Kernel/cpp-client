@@ -6,6 +6,7 @@
 #include <chrono>
 #include "resources/MainProgram.h"
 #include "resources/GameHandeler.h"
+#include <mutex>
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -23,8 +24,8 @@ int main() {
 	handeler.begin();
 	game.SetToken(handeler.GetToken());
 	handeler.ready();
-	while (true);//wait or server
-	//it will not pass above line but for fuurther development I placed the line below
+	while (handeler.GetGameOn());
+	
 	handeler.join();
 	
    
