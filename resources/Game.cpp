@@ -182,6 +182,7 @@ std::map<int, int> Game::getOwners() {
 
 		return owners;
 	}
+	return {};
 
 }
 std::map<int, int> Game::getTroopsCount() {
@@ -209,6 +210,7 @@ std::map<int, int> Game::getTroopsCount() {
 
 		return owners;
 	}
+	return {};
 
 }
 int Game::getState() {
@@ -353,7 +355,7 @@ std::vector<int> Game::getReachable(int node) {
 	//posting data to server
 	auto response = post(this->host, "/get_reachable", { {"node_id",std::to_string(node).c_str()},},  this->port);
 	if (response["status"] ) {
-		
+
 		return response["reachable"];
 
 
