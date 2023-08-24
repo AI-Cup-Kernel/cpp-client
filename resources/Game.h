@@ -4,7 +4,8 @@ const int NumberOfRegions=43;
 #include <iostream>
 #include <string>
 #include <vector>
-#include "../compile/stdafx.h"
+#include "../externals/httplib.h"
+#include "../externals/json.hpp"
 
 using namespace nlohmann;
 class Game {

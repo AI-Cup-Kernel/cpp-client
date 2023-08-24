@@ -14,7 +14,8 @@
 #include <random>
 #include <functional>
 #include <map>
-#include "../compile/stdafx.h"
+#include "../externals/httplib.h"
+#include "../externals/json.hpp"
 #include "MainProgram.h"
 
 
