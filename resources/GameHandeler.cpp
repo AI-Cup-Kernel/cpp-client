@@ -52,7 +52,7 @@ void handleKill(const httplib::Request& req, httplib::Response& res) {
 		&& req.headers.find("x-access-token")->second == server_token) {
 		
 		game_on_mutex.lock();
-		game_on = game_on;
+		game_on = false;
 		game_on_mutex.unlock();
 	}
 	else {
