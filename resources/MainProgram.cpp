@@ -3,7 +3,16 @@ Game game;
 //write your program for each state here
 void init() {
 	//it will be executed in a new thread when init requestws arrives
-	std::cout << "init has been called" << std::endl;
+	int i = 0;
+	while (true) {
+		i++;
+		auto x =  game.getAdj();
+		if (x.size() == 0) {
+			break;
+		}
+
+	}
+	std::cout << i << "-----\n";
 	
 }
 void yourTurn() {
