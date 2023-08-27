@@ -94,8 +94,11 @@ bool GameHandeler::begin() {
 			this->port = response["port"].get<int>();
 			this->token = response["token"];
 			this->id = response["player_id"];
+			
+			
 			if (DEBUGMODE)
-				std::cout << this->token;
+				std::cout << "my token:"<<this->token;
+			
 			
 
 			return true;

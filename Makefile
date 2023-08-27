@@ -1,7 +1,7 @@
-# Compiler and compiler flags
+path:=C:/libcurl
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall
-LIBS :=
+CXXFLAGS := -std=c++17 -Wall -I$(path)/include 
+LIBS := -lcurl -L$(path)/lib  
 
 # Check for Windows operating system
 ifeq ($(OS),Windows_NT)
