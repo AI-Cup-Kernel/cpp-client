@@ -35,3 +35,7 @@ note that you should download binaries listed in the long list below not the sou
  move your mouse on that and click on Quick Fix and go to Include Path settings there you should se a line like <code>One include path per line.</code>
  write the path under it and it will recognize it of course it is not neccessary because you are using make to build and its just for not getting annoying
  editor errors.
+
+ in the make file change the path: to your own libcurl directory
+
+ now just run make command in the root folder(if not recognized run using full path ) and the executable file named game will be built
