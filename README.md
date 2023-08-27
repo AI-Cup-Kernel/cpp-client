@@ -22,12 +22,15 @@ now extract it anywhere and add the bin folder in it to path (or instead of just
 <h2>installing libcurl</h2>
 <h3>Linux</h3>
 <code>sudo apt-get install libcurl4-openssl-dev</code>
+(remember to <code>sudo apt-get update</code>  first)
+
 <h3>MacOs</h3>
 <code>brew install curl-openssl</code>
-(for these two you can follow the windows instruction too)
+(for these two if didnt work use the instructions for windows)
 <h3>windows</h3>
 go to this <a href="https://curl.se/download.html">link</a> and download your apropraite libcurl version
 note that you should download binaries listed in the long list below not the source archives
+<a href="">for windows 64 bit</a>
  extract the downloaded file any where 
  <italic>optional:</italic>add its include and lib to path
  then in any code editor you use add the path to include for example if you are using vs code:
@@ -36,6 +39,7 @@ note that you should download binaries listed in the long list below not the sou
  write the path under it and it will recognize it of course it is not neccessary because you are using make to build and its just for not getting annoying
  editor errors.
 
- in the make file change the path: to your own libcurl directory
+ in the make file change the path: to your own libcurl directory(if using windows and installed it manually)
+ (for example for me it is looking like (path:=C:/libcurl))
 
  now just run make command in the root folder(if not recognized run using full path ) and the executable file named game will be built
