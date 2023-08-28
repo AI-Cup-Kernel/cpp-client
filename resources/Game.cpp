@@ -46,6 +46,7 @@ json Game::get(std::string url, std::string api, int port) {
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 	// Perform the request
 	CURLcode res = curl_easy_perform(curl);
+	std::cout<<response;
 	if (res != CURLE_OK) {
 		throw std::runtime_error("couldnt make the request");
 		curl_slist_free_all(headers);
@@ -288,11 +289,13 @@ void Game::putTroop(int node, int number_of_troops) {
 	//seeing if the response is valid
 	
 }
-void Game::attack(int origin_node, int target_node,float fraction) {
+void Game::attack(int origin_node, int target_node,float fraction,float move_fraction) {
 	//posting data to server
 	auto response = post(this->host, "/attack", { {"attacking_id",std::to_string(origin_node).c_str()},
 		{"target_id",std::to_string(target_node).c_str()},
-		{"fraction",std::to_string(fraction).c_str()} }, this->port);
+		{"fraction",std::to_string(fraction).c_str()},
+		{"move_fraction", std::to_string(move_fraction)}
+		}, this->port);
 	//seeing if the response is valid
 }
 void Game::moveTroops(int origin_node, int dest_node, int number_of_troops) {

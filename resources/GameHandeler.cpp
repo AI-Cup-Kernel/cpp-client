@@ -48,6 +48,7 @@ void handleEnd(const httplib::Request& req, httplib::Response& res) {
 }
 void handleKill(const httplib::Request& req, httplib::Response& res) {
 	//executed when turn request has arrived
+	std::cout<<"kill has been called";
 	if (req.headers.find("x-access-token") != req.headers.end()
 		&& req.headers.find("x-access-token")->second == server_token) {
 		

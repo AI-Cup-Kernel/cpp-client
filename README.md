@@ -1,45 +1,58 @@
+Certainly, here's the provided text converted into Markdown code:
+
+markdown
+Copy code
 # cpp-client
-<h1> cpp-client</h1>
-<h2>How to set up</h2>
-we have prepared a make file to make building easier if you are using any edito o IDE please build using the make file
-first you should install make(if you are mac or linux there is a godd chance you already have make  )
+## cpp-client
 
-<h3>Linux</h3>
-<code>sudo apt-get install make</code>
-<h3>MacOs</h3>
-(if you dont have HomeBrew)<code></code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<code>
-you could just install like window(but look for mac version in this <a href="https://www.gnu.org/software/make/">link</a>)
-just look for binaries not source
-<code>brew install make</code>
+### How to Set Up
 
-<h3>Windows</h3>
+We have prepared a makefile to simplify the building process. If you are using an editor or an IDE, please use the provided makefile for building.
 
-download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a>
-and install
+First, you should install `make`. If you are using macOS or Linux, there is a good chance you already have `make` installed.
 
-now extract it anywhere and add the bin folder in it to path (or instead of just make command you can just use the complete path)
+#### Linux
+sudo apt-get install make
 
-<h2>installing libcurl</h2>
-<h3>Linux</h3>
-<code>sudo apt-get install libcurl4-openssl-dev</code>
-(remember to <code>sudo apt-get update</code>  first)
+vbnet
+Copy code
 
-<h3>MacOs</h3>
-<code>brew install curl-openssl</code>
-(for these two if didnt work use the instructions for windows)
-<h3>windows</h3>
-go to this <a href="https://curl.se/download.html">link</a> and download your apropraite libcurl version
-note that you should download binaries listed in the long list below not the source archives
-<a href="">for windows 64 bit</a>
- extract the downloaded file any where 
- <italic>optional:</italic>add its include and lib to path
- then in any code editor you use add the path to include for example if you are using vs code:
- consider your path is "C:\\libcurl\\include" if you go to resources/game.cpp moset likely the editor is not recognizing <curl/curl.h>
- move your mouse on that and click on Quick Fix and go to Include Path settings there you should se a line like <code>One include path per line.</code>
- write the path under it and it will recognize it of course it is not neccessary because you are using make to build and its just for not getting annoying
- editor errors.
+#### macOS
+If you don't have Homebrew, you can install it using the following command:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+You can also install it like in Windows, but look for the macOS version on this link. Just download the binaries, not the source.
 
- in the make file change the path: to your own libcurl directory(if using windows and installed it manually)
- (for example for me it is looking like (path:=C:/libcurl))
+bash
+Copy code
+brew install make
+Windows
+Download this and install it.
 
- now just run make command in the root folder(if not recognized run using full path ) and the executable file named game will be built
+Now, extract the downloaded file anywhere and add the bin folder to your system's PATH. Alternatively, you can use the complete path when running the make command.
+
+Installing libcurl
+Linux
+arduino
+Copy code
+sudo apt-get install libcurl4-openssl-dev
+Make sure to run sudo apt-get update first.
+
+macOS
+Copy code
+brew install curl-openssl
+If these commands don't work, you can follow the instructions for Windows.
+
+Windows
+Go to this link and download the appropriate libcurl version for Windows (64-bit). Extract the downloaded file to any location.
+
+Optional: You can add the include and lib directories to your PATH. If you are using a code editor like Visual Studio Code and it doesn't recognize <curl/curl.h>, hover over the error, click on Quick Fix, and add the include path in the Include Path settings.
+
+In the makefile, update the path: to your libcurl directory (if you installed it manually on Windows). For example, it could be path:=C:/libcurl.
+
+Now, run the make command in the root folder (if it's not recognized, run it using the full path). This will build the executable file named game.
+
+kotlin
+Copy code
+
+Please note that this Markdown code contains the same content as the provi
