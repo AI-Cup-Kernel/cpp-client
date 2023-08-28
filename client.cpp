@@ -5,7 +5,7 @@
 #include <sstream>
 #include <chrono>
 #include "resources/MainProgram.h"
-#include "resources/GameHandeler.h"
+#include "resources/GameHandler.h"
 #include <mutex>
 
 
@@ -20,7 +20,7 @@ extern Game game;
 int main() {
 	
 	curl_global_init(CURL_GLOBAL_DEFAULT);
-	GameHandeler handeler(HOST,PORT);
+	GameHandler handeler(HOST,PORT);
 	game.SetHostsPort(PORT);
 	game.SetHost(HOST);
 	

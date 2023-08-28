@@ -19,7 +19,7 @@ Copy code
 
 #### macOS
 If you don't have Homebrew, you can install it using the following command:
-```bash
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 You can also install it like in Windows, but look for the macOS version on this link. Just download the binaries, not the source.
 
