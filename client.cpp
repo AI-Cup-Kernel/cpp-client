@@ -9,10 +9,10 @@
 #include <mutex>
 
 
-#pragma comment(lib, "ws2_32.lib")
+
 
 const int PORT = 12345;
-const std::string HOST = "127.0.0.1";
+const std::string HOST = "https://127.0.0.1";
 
 extern Game game;
 

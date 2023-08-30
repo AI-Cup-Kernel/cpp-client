@@ -12,7 +12,7 @@ else
 endif
 
 # Source files
-SRC := resources/Game.cpp resources/GameHandeler.cpp resources/MainProgram.cpp client.cpp
+SRC := resources/Game.cpp resources/GameHandler.cpp resources/MainProgram.cpp client.cpp
 
 # Object files
 OBJ := $(SRC:.cpp=.o)
