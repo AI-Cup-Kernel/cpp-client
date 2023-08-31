@@ -45,7 +45,7 @@ public:
 	
 
 	
-	bool result -= testServer();
+
 
 
 private:
