@@ -36,41 +36,10 @@ bool has_forted=false;
 }*/
 void init() {
 	//it will be executed in a new thread when init requestws arrives
-	auto owners=game.getOwners();
-	int me=game.getPlayerID();
-	auto all_troops=game.getTroopsCount();
+	
 	std::cout<<"init has been called";
 	try{
-		if(stra_nodes.size()<2){
-			auto owners=game.getOwners();
-			auto strategic_nodes=game.getStrategicNodes();
-			for(const auto& i:strategic_nodes){
-				if(owners[i.first]==0){
-					if(stra_nodes.size()==2)
-						break;
-					stra_nodes.push_back(i.first);
-
-				}
-			}
-		}
-		if(cnt%3==1||cnt%3==0){
-			game.putOneTroop(stra_nodes[cnt%2]);
-		}else{
-			for(auto i:owners){
-				if(i.second==me||all_troops[i.first]<3){
-					game.putOneTroop(i.first);
-					break;
-				}else if(i.second!=me){
-					game.putOneTroop(i.first);
-					nodes.push_back(i.first);
-					
-				}
-
-			}
-
-		}
-		cnt++;
-
+		
 		
 		
 		
@@ -84,40 +53,7 @@ void yourTurn() {
 	//it will be executed in a new thread when turn requestws arrives
 	std::cout << "yourTurn has been called" << std::endl;
 	try{
-		int me=game.getPlayerID();
-		auto owners=game.getOwners();
-		auto adj=game.getAdj();
-		auto all_troops=game.getTroopsCount();
-		int all=game.getNumberOfTroopsToPut();
-		for(auto i:stra_nodes){
-			
-			game.putTroop(stra_nodes[i],all/4);
-		}
-		for(int i=0;i<nodes.size();i++){
-			game.putTroop(stra_nodes[i],all/2/nodes.size());
-			
-		}
-		game.nextState();
-		for(auto node:nodes){
-			if(owners[node]!=me){
-				continue;
-			}
-			int troops=all_troops[node];
-			for(auto adj_node :adj[node]){
-				if(troops>2*all_troops[adj_node]){
-					if(game.attack(node,adj_node,1,0.4)){
-						nodes.push_back(adj_node);
-					}
-				}
-			}
-		
-		}
-		game.nextState();
-		turn_cnt++;
-		if(turn_cnt>70&&!has_forted){
-			game.fort(stra_nodes[0],all_troops[stra_nodes[0]]);
-			has_forted=true;
-		}
+	
 		
 	}
 	catch(const std::exception& e){

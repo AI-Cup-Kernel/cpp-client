@@ -254,7 +254,7 @@ void Game::nextState() {
 	
 }
 void Game::fort(int node,int troop_count){
-	auto response = post(this->host, "/get_reachable", 
+	auto response = post(this->host, "/fort", 
 	{ {"node_id",std::to_string(node)}
 	,{"troop_count",std::to_string(troop_count)} }, 
 	 this->port);
