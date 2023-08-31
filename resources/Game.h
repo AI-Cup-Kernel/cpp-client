@@ -35,10 +35,11 @@ public:
 	std::vector<std::pair<int, int>> getStrategicNodes();
 	void putOneTroop(int node);
 	void putTroop(int node, int number_of_troops);
-	void attack(int origin_node, int target_node, float fraction,float move_fraction);
+	bool attack(int origin_node, int target_node, float fraction,float move_fraction);
 	void moveTroops(int origin_node, int dest_node, int number_of_troops);
 	std::vector<int> getReachable(int node);
 	void SetClient();
+	void fort(int node,int troop_count);
 
 	
 

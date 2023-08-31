@@ -290,13 +290,14 @@ void Game::putTroop(int node, int number_of_troops) {
 	//seeing if the response is valid
 	
 }
-void Game::attack(int origin_node, int target_node,float fraction,float move_fraction) {
+bool Game::attack(int origin_node, int target_node,float fraction,float move_fraction) {
 	//posting data to server
 	auto response = post(this->host, "/attack", { {"attacking_id",std::to_string(origin_node).c_str()},
 		{"target_id",std::to_string(target_node)},
 		{"fraction",std::to_string(fraction)},
 		{"move_fraction", std::to_string(move_fraction)}
 		}, this->port);
+	return response["won"].get<int>();//will be cast to bool
 	//seeing if the response is valid
 }
 void Game::moveTroops(int origin_node, int dest_node, int number_of_troops) {
@@ -321,4 +322,11 @@ void Game::SetClient() {
 	
 
 	
+}
+void Game::fort(int node,int troop_count){
+	auto response = post(this->host, "/get_reachable", 
+	{ {"node_id",std::to_string(node)}
+	,{"troop_count",std::to_string(troop_count)} }, 
+	 this->port);
+
 }
