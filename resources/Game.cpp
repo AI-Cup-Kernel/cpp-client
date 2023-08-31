@@ -253,6 +253,34 @@ void Game::nextState() {
 	
 	
 }
+void Game::fort(int node,int troop_count){
+	auto response = post(this->host, "/get_reachable", 
+	{ {"node_id",std::to_string(node)}
+	,{"troop_count",std::to_string(troop_count)} }, 
+	 this->port);
+
+}
+std::map<int, int> Game::getNumberOfFortTroops(){
+	auto response = this->get(this->host, "/get_number_of_fort_troops", this->port);
+	std::map<int, int> fort_troops;
+
+	for (const auto& item : response.items()) {
+		if (item.key() != "status") {
+			const int key = std::stoi(item.key());
+			const int value = item.value().get<int>();
+			fort_troops[key] = value;
+		}
+	}
+	// Print the map of vectors
+	if (DEBUGMODE) {
+		for (const auto& item : fort_troops) {
+			std::cout << item.first << ": " << item.second<<"     ";
+		}
+		std::cout << std::endl;
+	}
+	return fort_troops;
+	
+}
 int Game::getPlayerID() {
 	auto response = this->get(this->host, "/get_player_id", this->port);
 
@@ -323,10 +351,5 @@ void Game::SetClient() {
 
 	
 }
-void Game::fort(int node,int troop_count){
-	auto response = post(this->host, "/get_reachable", 
-	{ {"node_id",std::to_string(node)}
-	,{"troop_count",std::to_string(troop_count)} }, 
-	 this->port);
 
-}
+	

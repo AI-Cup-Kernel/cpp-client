@@ -40,16 +40,17 @@ public:
 	std::vector<int> getReachable(int node);
 	void SetClient();
 	void fort(int node,int troop_count);
-
+	
+	std::map<int, int>getNumberOfFortTroops();
 	
 
 	
-	
+	bool result -= testServer();
 
 
 private:
 
-
+		
 	struct curl_slist* headers = nullptr;
 	httplib::Client* client;
 	std::string host;
