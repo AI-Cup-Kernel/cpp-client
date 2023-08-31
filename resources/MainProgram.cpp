@@ -9,6 +9,8 @@ void init() {
 	std::cout<<"init has been called";
 	try{
 		
+		//write your code here
+		
 		
 		
 		
@@ -22,7 +24,8 @@ void yourTurn() {
 	//it will be executed in a new thread when turn requestws arrives
 	std::cout << "yourTurn has been called" << std::endl;
 	try{
-	
+		
+	//write your code here
 		
 	}
 	catch(const std::exception& e){
@@ -34,7 +37,7 @@ void end() {
 
 	std::cout << "end has been called" << std::endl;
 	try{
-		//write you code here
+		//write your code here
 		
 	}
 	catch(const std::exception& e){

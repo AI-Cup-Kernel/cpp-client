@@ -55,8 +55,8 @@ json Game::get(std::string url, std::string api, int port) {
 
 	}
 	else {
-		//if (DEBUGMODE)
-		//		std::cout << "Response: " << response << std::endl;
+		if (DEBUGMODE)
+				std::cout << "Response: " << response << std::endl;
 			
 		json result = json::parse(response);
 		if(result.find("error")!=result.end()){

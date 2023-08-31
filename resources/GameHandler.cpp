@@ -3,7 +3,7 @@ httplib::Server* server;
 std::string server_token;
 std::vector<std::thread> threads;
 
-const bool DEBUGMODE = true;
+const bool DEBUGMODE = false;
 bool game_on = true;
 std::mutex game_on_mutex;
 
