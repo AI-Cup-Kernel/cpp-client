@@ -6,18 +6,17 @@ CXX := g++
 
 # Compiler flags
 CXXFLAGS := -std=c++17 -Wall
-
-
+LiBS:= 
 # Check for Windows operating system
 ifeq ($(OS),Windows_NT)
     # On Windows, add -I and -L flags for libcurl
     CXXFLAGS += -I$(path)/include
-    LIBS += LIBS := -L$(path)/lib -lcurl -lws2_32
+    LIBS := -L$(path)/lib -lcurl -lws2_32
     # Set clean command
     CLEAN_COMMAND := del
 else
     # On non-Windows systems, assume libcurl is available system-wide
-    LIBS += -lcurl
+    LIBS := -lcurl
     # Set clean command
     CLEAN_COMMAND := rm -f
 endif
