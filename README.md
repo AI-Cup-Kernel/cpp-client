@@ -20,7 +20,6 @@ You can also install it similarly to Windows, but look for the macOS version on 
 
 Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a> and install it.
 
-<<<<<<< HEAD
 #### macOS
 If you don't have Homebrew, you can install it using the following command:
 
@@ -28,7 +27,7 @@ If you don't have Homebrew, you can install it using the following command:
 You can also install it like in Windows, but look for the macOS version on this link. Just download the binaries, not the source.
 =======
 Now, extract it anywhere and add the `bin` folder to your PATH (or you can use the complete path instead of just the `make` command).
->>>>>>> 496e0596742c6674b3c50197018fd1077bd665c0
+
 
 
 Go to this <a href="https://curl.se/download.html">link</a> and download the appropriate libcurl version for your Windows (64-bit) system. Note that you should download binaries listed in the long list below, not the source archives.
