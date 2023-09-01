@@ -3,12 +3,12 @@
 <h2>How to Set Up</h2>
 We have prepared a make file to simplify the building process. If you are using any editor or IDE, please build using the make file. First, you should install `make`. If you are on macOS or Linux, there is a good chance you already have `make` installed.
 
-<h3>Linux</h3>
+#### Linux
 <code>sudo apt-get update</code><br>
 <code>sudo apt-get install make</code><br>
 <code>sudo apt-get install libcurl4-openssl-dev</code><br>
 
-<h3>macOS</h3>
+#### macOS
 (if you don't have HomeBrew)<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>
 You can also install it similarly to Windows, but look for the macOS version on this <a href="https://www.gnu.org/software/make/">link</a>. Just look for binaries, not the source.
 <code>brew install make</code>
@@ -16,6 +16,7 @@ You can also install it similarly to Windows, but look for the macOS version on 
 <code>brew install curl-openssl</code>
 (If these two commands didn't work, use the instructions for Windows).
 
+<strong>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</strong>
 #### Windows
 
 for make Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a> and install it.
@@ -25,13 +26,7 @@ extract the downloaded file anywhere.
 <em>Optional:</em> Add its `include` and `lib` directories to your PATH.
 If you are using a code editor like VS Code and it doesn't recognize `<curl/curl.h>`, hover over the error, click on Quick Fix, and go to Include Path settings. There you should see a line like <code>One include path per line.</code> Write the path below it, and it will be recognized. Of course, this is not necessary because you are using `make` to build, and it's just to prevent annoying editor errors.
 In the make file, change the `path:` to your own libcurl directory (if you installed it manually on Windows). For example, for me, it looks like (path:=C:/libcurl).
-#### macOS
-If you don't have Homebrew, you can install it using the following command:
 
-<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</code>
-and then <code></code>
-You can also install it like in Windows, but look for the macOS version on this link. Just download the binaries, not the source.
 
-<italic>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</italic>
 #### run the program
 Now, just run the `make` command in the root folder (if it's not recognized, run it using the full path), and the executable the file named `game` will be built.
