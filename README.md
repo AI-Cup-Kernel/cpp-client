@@ -3,6 +3,7 @@
 <h2>How to Set Up</h2>
 We have prepared a make file to simplify the building process. If you are using any editor or IDE, please build using the make file. First, you should install `make`. If you are on macOS or Linux, there is a good chance you already have `make` installed.
 notice :you might run to some errors saying some dll file doesnt exist so install them :)
+notice2: make sure to install g++ compiler(you need to worry about it when you have always used visual studio only(withh pretty much other IDEs it automaticly wil ber installed but make sure of that and make sure that its address is in the path(again,it is most probably there)))
 #### Linux
 <code>sudo apt-get update</code><br>
 <code>sudo apt-get install make</code><br>
