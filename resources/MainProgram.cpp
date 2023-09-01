@@ -4,12 +4,14 @@ Game game;
 
 
 void init() {
-	//it will be executed in a new thread when init requestws arrives
+	//it will be executed in a new thread once the init request arrives
 	
 	std::cout<<"init has been called";
 	try{
 		
 		//write your code here
+
+		
 		
 		
 		
