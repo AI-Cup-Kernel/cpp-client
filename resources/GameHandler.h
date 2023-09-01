@@ -16,7 +16,7 @@
 #include <map>
 #include "../externals/json.hpp"
 #include "MainProgram.h"
-#include "../externals/httplib.h"
+#include "../httplib_headers.h"
 
 using namespace nlohmann;
 
@@ -28,6 +28,7 @@ void handleYourTurn(const httplib::Request& req, httplib::Response& res);
 void handleKill(const httplib::Request& req, httplib::Response& res);
 void handleEnd(const httplib::Request& req, httplib::Response& res);
 void handleInit(const httplib::Request& req, httplib::Response& res);
+
 
 //there should just be one GamHandeler
 class GameHandler {

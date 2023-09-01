@@ -6,7 +6,7 @@ const int NumberOfRegions=43;
 #include <vector>
 #include <curl/curl.h>
 #include <stdexcept>
-#include "../externals/httplib.h"
+#include "../httplib_headers.h"
 #include "../externals/json.hpp"
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* user_data);
 
