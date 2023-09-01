@@ -23,7 +23,7 @@ Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make
 #### macOS
 If you don't have Homebrew, you can install it using the following command:
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</code>
 You can also install it like in Windows, but look for the macOS version on this link. Just download the binaries, not the source.
 
 Now, extract it anywhere and add the `bin` folder to your PATH (or you can use the complete path instead of just the `make` command).
