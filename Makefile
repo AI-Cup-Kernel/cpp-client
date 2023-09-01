@@ -1,19 +1,29 @@
+# Path to libcurl directory
 path := C:/libcurl
+
+# C++ compiler
 CXX := g++
-CXXFLAGS := -std=c++17 -Wall -I$(path)/include
-LIBS := -lcurl -L$(path)/lib
+
+# Compiler flags
+CXXFLAGS := -std=c++17 -Wall
+
 
 # Check for Windows operating system
 ifeq ($(OS),Windows_NT)
-    LIBS += -lws2_32
+    # On Windows, add -I and -L flags for libcurl
+    CXXFLAGS += -I$(path)/include
+    LIBS += LIBS := -L$(path)/lib -lcurl -lws2_32
+    # Set clean command
     CLEAN_COMMAND := del
 else
+    # On non-Windows systems, assume libcurl is available system-wide
+    LIBS += -lcurl
+    # Set clean command
     CLEAN_COMMAND := rm -f
 endif
 
 # Source files
 SRC := resources/Game.cpp resources/GameHandler.cpp resources/MainProgram.cpp client.cpp
-DEPS := $(wildcard *.h) # Include all header files in the dependencies
 
 # Object files
 OBJ := $(SRC:.cpp=.o)
@@ -23,12 +33,12 @@ TARGET := game
 
 # Default target
 all: $(TARGET)
-$(info Compiling: $(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS))
+
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS)
 
 # Compile source files to object files
-%.o: %.cpp $(DEPS)
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Clean rule
