@@ -32,4 +32,4 @@ In the make file, change the `path:` to your own libcurl directory (if you insta
 
 #### run the program
 Now, just run the `make` command in the root folder (if it's not recognized, run it using the full path), and the executable the file named `game` will be built.
-if you couldnt run with make use <code>g++ -std=c++17 -Wall -IC:/libcurl/include  resources/Game.o resources/GameHandler.o resources/MainProgram.o client.o -o game -lcurl -LC:/libcurl/lib   -lws2_32</code>and replace  two C:/libcurl parts with your own libcurl path
+if you couldnt run with make use <code>g++ -std=c++17 -Wall -IC:/libcurl/include  resources/Game.o resources/GameHandler.o resources/MainProgram.o client.o -o game -lcurl -LC:/libcurl/lib   -lws2_32</code>and replace  two C:/libcurl parts with your own libcurl path but it will take much more time
