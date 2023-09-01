@@ -21,7 +21,7 @@ You can also install it similarly to Windows, but look for the macOS version on 
 <strong>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</strong>
 #### Windows
 
-for make Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a> and extract it.thete is a make.exe in bin folder.add bin folder to windows path we will use that later (alternatively you can use the complete path like C:/Users/..../bin/make.exe to run that later).
+for make Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a> and extract it download the mentioned dlls and place them in the bin directory(for windoows 64 bit download <a href="https://drive.google.com/file/d/1YPL0A9RLq2qBH5X195ZGw0H11tnJg3td/view?usp=sharing">this</a> it has the dlls).thete is a make.exe in bin folder.add bin folder to windows path we will use that later (alternatively you can use the complete path like C:/Users/..../bin/make.exe to run that later).
 for libcurl go to <a href="https://curl.se/download.html">this link </a> and download the binary version suitable for you (not the links on the top look for them in the table)
 fir example for windows 64 bit download <a href="https://curl.se/windows/dl-8.2.1_8/curl-8.2.1_8-win64-mingw.zip">this</a>.
 extract the downloaded file anywhere.
