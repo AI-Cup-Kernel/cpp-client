@@ -29,7 +29,7 @@ extract it.
 then you have to add the bin folder of the extracted file to the system environment variables, or skip this part and run the make.exe file later using the full path like C:/Users/..../bin/make.exe (not recommended)
 
 2- for adding the path to system environment variables:<br>
-   1- press the win key and type `edit the system environment variables` and hit enter.<br>
+<pre>1- press the win key and type `edit the system environment variables` and hit enter.</pre><br>
    2- at the bottem of the opened window click environment "variables".<br>
    3- in the "User variavles" find and select "Path", then click edit.<br>
    4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder  and click ok.<br>
