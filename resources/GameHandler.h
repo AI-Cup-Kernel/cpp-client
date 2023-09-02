@@ -14,6 +14,7 @@
 #include <random>
 #include <functional>
 #include <map>
+#include "../externals/httplib.h"
 #include "MainProgram.h"
 
 
