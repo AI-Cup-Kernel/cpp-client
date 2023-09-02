@@ -3,7 +3,7 @@
 #include <chrono>
 
 using namespace std::chrono;
-const bool DEBUGMODE = false;//set this to false to prevent extra information
+const bool DEBUGMODE = true;//set this to false to prevent extra information
 
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* user_data) {
 	size_t real_size = size * nmemb;
@@ -111,9 +111,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 
 	}
 	else {
-		//if (DEBUGMODE)
-		//		std::cout << "Response: " << response << std::endl;
-			
+		
 		json result = json::parse(response);
 		if(result.find("error")!=result.end()){
 			throw std::runtime_error(result["error"]);
@@ -306,16 +304,14 @@ std::vector<std::pair<int,int>> Game::getStrategicNodes() {
 }
 void Game::putOneTroop(int node) {
 	//posting data to server
-	auto response = post(this->host, "/put_one_troop", { {"node_id","1"}}, this->port);
-	//seeing if the response is valid
-	
+	auto response = post(this->host, "/put_one_troop", { {"node_id",std::to_string(node)}}, this->port);
+
 
 
 }
 void Game::putTroop(int node, int number_of_troops) {
 	//posting data to server
 	auto response = post(this->host, "/put_troop", { {"node_id",std::to_string(node).c_str()},{"number_of_troops",std::to_string(number_of_troops).c_str()} }, this->port);
-	//seeing if the response is valid
 	
 }
 bool Game::attack(int origin_node, int target_node,float fraction,float move_fraction) {
@@ -326,14 +322,12 @@ bool Game::attack(int origin_node, int target_node,float fraction,float move_fra
 		{"move_fraction", std::to_string(move_fraction)}
 		}, this->port);
 	return response["won"].get<int>();//will be cast to bool
-	//seeing if the response is valid
 }
 void Game::moveTroops(int origin_node, int dest_node, int number_of_troops) {
 	//posting data to server
 	auto response = post(this->host, "/move_troop", { {"source",std::to_string(origin_node).c_str()},
 		{"destination",std::to_string(dest_node).c_str()},
 		{"troop_count",std::to_string(number_of_troops).c_str()} }, this->port);
-	//seeing if the response is valid
 }
 std::vector<int> Game::getReachable(int node) {
 	//posting data to server
