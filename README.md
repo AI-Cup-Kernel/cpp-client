@@ -36,7 +36,8 @@ then you have to add the bin folder of the extracted file to the system environm
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5- click ok in the previous windows and close them.<br>
 
 
-<div style="position:absolute; right:50px;">This div will be moved to the right.</div>
+<div style="margin-right:50px;">This div will be moved 50px to the right.</div>
+
 
 
 
