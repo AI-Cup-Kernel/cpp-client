@@ -36,11 +36,6 @@ then you have to add the bin folder of the extracted file to the system environm
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5- click ok in the previous windows and close them.<br>
 
 
-<div style="margin-right:50px;">This div will be moved 50px to the right.</div>
-
-
-
-
 3- Download a binary version of <a href="https://curl.se/windows/">libcurl</a> suitable for you. then extract the downloaded file anywhere.
   
 <em>Optional:</em> Add its `include` and `lib` directories to the system environment variables path like step 2.
