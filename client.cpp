@@ -24,7 +24,7 @@ int main() {
 	game.SetHost(HOST);
 	
 	handeler.begin();
-	
+	std::cout<<"token:"<<handeler.GetToken();
 	game.SetToken(handeler.GetToken());
 	game.SetClient();
 	handeler.ready();
