@@ -60,7 +60,7 @@ json Game::get(std::string url, std::string api, int port) {
 			
 		json result = json::parse(response);
 		if(result.find("error")!=result.end()){
-			throw std::runtime_error("the response format it not anticipated");
+			throw std::runtime_error(result["error"]);
 		}
 		
 		curl_easy_cleanup(curl);
@@ -113,6 +113,9 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 
 	}
 	else {
+		if (DEBUGMODE)
+				std::cout << "Response: " << response << std::endl;
+			
 		
 		json result = json::parse(response);
 		if(result.find("error")!=result.end()){

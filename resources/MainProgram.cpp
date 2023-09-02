@@ -10,7 +10,7 @@ void init() {
 	try{
 		
 		
-
+game.putTroop(1,100);
 		
 		
 		
@@ -26,8 +26,10 @@ void yourTurn() {
 	//it will be executed in a new thread when turn requestws arrives
 	std::cout << "yourTurn has been called" << std::endl;
 	try{
+		game.putTroop(1,100);
 		
 	//write your code here
+	
 		
 	}
 	catch(const std::exception& e){
