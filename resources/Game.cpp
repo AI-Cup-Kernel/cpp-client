@@ -202,7 +202,7 @@ std::map<int, int> Game::getOwners() {
 	
 
 }
-std::map<int, int> Game::getTroopsCount() {
+std::map<int, int> Game::getNumberOfTroops() {
 	auto response = this->get(this->host, "/get_troops_count", this->port);
 
 	std::map<int, int> owners;
