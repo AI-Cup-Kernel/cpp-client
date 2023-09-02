@@ -3,7 +3,7 @@
 #include <chrono>
 
 using namespace std::chrono;
-const bool DEBUGMODE = true;//set this to false to prevent extra information
+const bool DEBUGMODE = false;//set this to false to prevent extra information
 
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* user_data) {
 	size_t real_size = size * nmemb;
