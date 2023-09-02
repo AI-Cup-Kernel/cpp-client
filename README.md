@@ -1,10 +1,11 @@
-# cpp-client
+{{--# cpp-client--}}
 <h1> cpp-client</h1>
 <h2>How to Set Up</h2>
 We have prepared a make file to simplify the building process. If you are using any editor or IDE, please build using the make file. First, you should install `make`. If you are on macOS or Linux, there is a good chance you already have `make` installed.
 notice :you might run to some errors saying some dll file doesnt exist so install them :)
 if you have trouble executing make beacuse if dlls download libintl3.dll and libiconv2.dll and place them next to make.exe in the maked bin folder
 notice2: make sure to install g++ compiler(you need to worry about it when you have always used visual studio only(withh pretty much other IDEs it automaticly wil ber installed but make sure of that and make sure that its address is in the path(again,it is most probably there)))
+
 #### Linux
 <code>sudo apt-get update</code><br>
 <code>sudo apt-get install make</code><br>
@@ -19,15 +20,32 @@ You can also install it similarly to Windows, but look for the macOS version on 
 (If these two commands didn't work, use the instructions for Windows).
 
 <strong>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</strong>
-#### Windows
 
-for make Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a> and extract it download the mentioned dlls and place them in the bin directory(for windoows 64 bit download <a href="https://drive.google.com/file/d/1YPL0A9RLq2qBH5X195ZGw0H11tnJg3td/view?usp=sharing">this</a> it has the dlls).thete is a make.exe in bin folder.add bin folder to windows path we will use that later (alternatively you can use the complete path like C:/Users/..../bin/make.exe to run that later).
-for libcurl go to <a href="https://curl.se/download.html">this link </a> and download the binary version suitable for you (not the links on the top look for them in the table)
-fir example for windows 64 bit download <a href="https://curl.se/windows/dl-8.2.1_8/curl-8.2.1_8-win64-mingw.zip">this</a>.
-extract the downloaded file anywhere.
-<em>Optional:</em> Add its `include` and `lib` directories to your PATH.
-If you are using a code editor like VS Code and it doesn't recognize `<curl/curl.h>`, hover over the error, click on Quick Fix, and go to Include Path settings. There you should see a line like <code>One include path per line.</code> Write the path below it, and it will be recognized. Of course, this is not necessary because you are using `make` to build, and it's just to prevent annoying editor errors.
-In the make file, change the `path:` to your own libcurl directory (if you installed it manually on Windows). For example, for me, it looks like (path:=C:/libcurl).
+#### Windows
+1- for 64-bit Windows: Download <a href="https://drive.google.com/file/d/1YPL0A9RLq2qBH5X195ZGw0H11tnJg3td/view?usp=sharing">this</a> (it already has the dlls) and
+extract it.
+
+   for 32-bit Windows: Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a>, extract it and then download and these dlls: <a href="https://www.dll-files.com/libintl3.dll.html">libintl3.dll</a> and <a href="https://www.dll-files.com/libiconv2.dll.html">libiconv2.dll</a> . place the dlls in the bin folder of the extracted file next to the make.exe file.
+then you have to add the bin folder of the extracted file to the system environment variables, or skip this part and run the make.exe file later using the full path like C:/Users/..../bin/make.exe (not recommended)
+
+2- for adding the path to system environment variables:
+  1- press the win key and type `edit the system environment variables` and hit enter.
+  2- at the bottem of the opened window click environment "variables".
+  3- in the "User variavles" find and select "Path", then click edit.
+  4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder and click ok.
+  5- click ok in the previous windows and close them.
+
+3- Download a binary version of <a href="https://curl.se/windows/">libcurl</a> suitable for you. then extract the downloaded file anywhere
+  
+<em>Optional:</em> Add its `include` and `lib` directories to the system environment variables path like step 2.
+
+If you are using a code editor like VS Code and it doesn't recognize `<curl/curl.h>`:
+1- hover over the error
+2- click on Quick Fix, and go to Include Path settings
+3- There you should see a line like <code>One include path per line.</code> Write the path below it, and it will be recognized.
+Of course, this is not necessary because you are using `make` command to build, and it's just to prevent annoying editor errors.
+
+4- after cloning this repo, there is a MakeFile in it, edit it and change the `path:` to your own libcurl directory that you downloaded in step 3 (the path that contains include, lib ,etc files). For example, for me, it looks like (path := C:/libcurl).
 
 
 
