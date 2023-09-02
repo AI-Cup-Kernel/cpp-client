@@ -26,7 +26,7 @@ public:
 	bool testServer();
 	std::map<int, std::vector <int>> getAdj();
 	std::map<int, int> getOwners();
-	std::map<int, int> getTroopsCount();
+	std::map<int, int> getNumberOfTroops();
 	int getState();
 	int getTurnNumber();
 	void nextState();
