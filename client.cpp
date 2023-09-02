@@ -4,7 +4,6 @@
 #include <map>
 #include <sstream>
 #include <chrono>
-#include "resources/MainProgram.h"
 #include "resources/GameHandler.h"
 #include <mutex>
 

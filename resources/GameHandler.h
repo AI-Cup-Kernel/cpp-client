@@ -14,7 +14,6 @@
 #include <random>
 #include <functional>
 #include <map>
-#include "../externals/json.hpp"
 #include "MainProgram.h"
 
 
