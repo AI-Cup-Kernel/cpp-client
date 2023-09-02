@@ -28,12 +28,12 @@ extract it.
    for 32-bit Windows: Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a>, extract it and then download and these dlls: <a href="https://www.dll-files.com/libintl3.dll.html">libintl3.dll</a> and <a href="https://www.dll-files.com/libiconv2.dll.html">libiconv2.dll</a> . place the dlls in the bin folder of the extracted file next to the make.exe file.
 then you have to add the bin folder of the extracted file to the system environment variables, or skip this part and run the make.exe file later using the full path like C:/Users/..../bin/make.exe (not recommended)
 
-2- for adding the path to system environment variables:
-  1- press the win key and type `edit the system environment variables` and hit enter.
-  2- at the bottem of the opened window click environment "variables".
-  3- in the "User variavles" find and select "Path", then click edit.
-  4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder and click ok.
-  5- click ok in the previous windows and close them.
+2- for adding the path to system environment variables:<br>
+  1- press the win key and type `edit the system environment variables` and hit enter.<br>
+  2- at the bottem of the opened window click environment "variables".<br>
+  3- in the "User variavles" find and select "Path", then click edit.<br>
+  4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder and click ok.<br>
+  5- click ok in the previous windows and close them.<br>
 
 3- Download a binary version of <a href="https://curl.se/windows/">libcurl</a> suitable for you. then extract the downloaded file anywhere
   
