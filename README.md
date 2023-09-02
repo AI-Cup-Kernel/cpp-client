@@ -29,11 +29,11 @@ extract it.
 then you have to add the bin folder of the extracted file to the system environment variables, or skip this part and run the make.exe file later using the full path like C:/Users/..../bin/make.exe (not recommended)
 
 2- for adding the path to system environment variables:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;1- press the win key and type `edit the system environment variables` and hit enter.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;2- at the bottem of the opened window click environment "variables".<br>
-&nbsp;&nbsp;&nbsp;&nbsp;3- in the "User variavles" find and select "Path", then click edit.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder  and click ok.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;5- click ok in the previous windows and close them.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1- press the win key and type `edit the system environment variables` and hit enter.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2- at the bottem of the opened window click environment "variables".<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3- in the "User variavles" find and select "Path", then click edit.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4- click "New" and paste the path to the bin folder or alternatively click browse and navigate to the bin folder  and click ok.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5- click ok in the previous windows and close them.<br>
 
 3- Download a binary version of <a href="https://curl.se/windows/">libcurl</a> suitable for you. then extract the downloaded file anywhere
   
