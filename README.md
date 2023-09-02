@@ -7,16 +7,16 @@ if you have trouble executing make beacuse if dlls download libintl3.dll and lib
 notice2: make sure to install g++ compiler(you need to worry about it when you have always used visual studio only(withh pretty much other IDEs it automaticly wil ber installed but make sure of that and make sure that its address is in the path(again,it is most probably there)))
 
 #### Linux
-<code>sudo apt-get update</code><br>
-<code>sudo apt-get install make</code><br>
-<code>sudo apt-get install libcurl4-openssl-dev</code><br>
+1- <code>sudo apt-get update</code><br>
+2- <code>sudo apt-get install make</code><br>
+3- <code>sudo apt-get install libcurl4-openssl-dev</code><br>
 
 #### macOS
-(if you don't have HomeBrew)<code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>
+1- (if you don't have HomeBrew) <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>
 You can also install it similarly to Windows, but look for the macOS version on this <a href="https://www.gnu.org/software/make/">link</a>. Just look for binaries, not the source.
 <code>brew install make</code>
 
-<code>brew install curl-openssl</code>
+2- <code>brew install curl-openssl</code>
 (If these two commands didn't work, use the instructions for Windows).
 
 <strong>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</strong>
@@ -47,7 +47,6 @@ If you are using a code editor like VS Code and it doesn't recognize `<curl/curl
 Of course, this is not necessary because you are using `make` command to build, and it's just to prevent annoying editor errors.
 
 4- after cloning this repo, there is a MakeFile in it, edit it and change the `path:` to your own libcurl directory that you downloaded in step 3 (the path that contains include, lib ,etc files). For example, for me, it looks like (path := C:/libcurl).
-
 
 
 #### run the program
