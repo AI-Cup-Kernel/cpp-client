@@ -6,7 +6,7 @@ Game game;
 void init() {
 	//it will be executed in a new thread once the init request arrives
 	
-	std::cout<<"init has been called";
+	std::cout<<"init has been called"<<std::endl;
 	try{
 		
 		//write your code here
