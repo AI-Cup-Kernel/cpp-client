@@ -51,7 +51,7 @@ private:
 
 		
 	struct curl_slist* headers = nullptr;
-	httplib::Client* client;
+	
 	std::string host;
 	int port;
 	std::string token;
