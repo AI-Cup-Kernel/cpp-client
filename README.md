@@ -25,7 +25,7 @@ You can also install it similarly to Windows, but look for the macOS version on 
 1- for 64-bit Windows: Download <a href="https://drive.google.com/file/d/1YPL0A9RLq2qBH5X195ZGw0H11tnJg3td/view?usp=sharing">this</a> (it already has the dlls) and
 extract it.
 
-   for 32-bit Windows: Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a>, extract it and then download and these dlls: <a href="https://www.dll-files.com/libintl3.dll.html">libintl3.dll</a> and <a href="https://www.dll-files.com/libiconv2.dll.html">libiconv2.dll</a> . place the dlls in the bin folder of the extracted file next to the make.exe file.
+&nbsp;&nbsp;&nbsp;&nbsp;for 32-bit Windows: Download <a href="https://sourceforge.net/projects/gnuwin32/files/make/3.81/make-3.81-bin.zip/download?use_mirror=netactuate&download=&failedmirror=deac-riga.dl.sourceforge.net">this</a>, extract it and then download and these dlls: <a href="https://www.dll-files.com/libintl3.dll.html">libintl3.dll</a> and <a href="https://www.dll-files.com/libiconv2.dll.html">libiconv2.dll</a> . place the dlls in the bin folder of the extracted file next to the make.exe file.
 then you have to add the bin folder of the extracted file to the system environment variables, or skip this part and run the make.exe file later using the full path like C:/Users/..../bin/make.exe (not recommended)
 
 2- for adding the path to system environment variables:<br>
