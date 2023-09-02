@@ -1,5 +1,5 @@
-{{--# cpp-client--}}
-<h1> cpp-client</h1>
+# cpp-client
+
 <h2>How to Set Up</h2>
 We have prepared a make file to simplify the building process. If you are using any editor or IDE, please build using the make file. First, you should install `make`. If you are on macOS or Linux, there is a good chance you already have `make` installed.
 notice :you might run to some errors saying some dll file doesnt exist so install them :)
