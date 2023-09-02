@@ -6,10 +6,14 @@ notice :you might run to some errors saying some dll file doesnt exist so instal
 if you have trouble executing make beacuse if dlls download libintl3.dll and libiconv2.dll and place them next to make.exe in the maked bin folder
 notice2: make sure to install g++ compiler(you need to worry about it when you have always used visual studio only(withh pretty much other IDEs it automaticly wil ber installed but make sure of that and make sure that its address is in the path(again,it is most probably there)))
 
+first, clone this repository
+
 #### Linux
 1- <code>sudo apt-get update</code><br>
 2- <code>sudo apt-get install make</code><br>
 3- <code>sudo apt-get install libcurl4-openssl-dev</code><br>
+
+
 
 #### macOS
 1- (if you don't have HomeBrew) <code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code><br>
@@ -20,6 +24,8 @@ You can also install it similarly to Windows, but look for the macOS version on 
 (If these two commands didn't work, use the instructions for Windows).
 
 <strong>if you got errors using an IDE or editor do the things described in the last paragraph of the windows section</strong>
+
+
 
 #### Windows
 1- for 64-bit Windows: Download <a href="https://drive.google.com/file/d/1YPL0A9RLq2qBH5X195ZGw0H11tnJg3td/view?usp=sharing">this</a> (it already has the dlls) and
