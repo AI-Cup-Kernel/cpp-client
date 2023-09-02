@@ -248,7 +248,7 @@ void GameHandler::join() {
 		server->stop();
 		server_thread->join();
 	}
-	for (int i = 0; i < threads.size(); i++)
+	for (int i = 0; i < int(threads.size()); i++)
 		threads[i].join();
 
 

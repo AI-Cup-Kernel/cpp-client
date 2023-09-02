@@ -50,7 +50,7 @@ json Game::get(std::string url, std::string api, int port) {
 	CURLcode res = curl_easy_perform(curl);
 	if (res != CURLE_OK) {
 		throw std::runtime_error("couldnt make the request");
-		curl_slist_free_all(headers);
+		
 		curl_easy_cleanup(curl);
 
 	}
@@ -62,12 +62,14 @@ json Game::get(std::string url, std::string api, int port) {
 		if(result.find("error")!=result.end()){
 			throw std::runtime_error("the response format it not anticipated");
 		}
+		
+		curl_easy_cleanup(curl);
 		return result;
 	}
 
-	// Clean up
-	curl_slist_free_all(headers);
-	curl_easy_cleanup(curl);
+	// it doesnt reach here 
+	return json::parse("");
+	
 
 
 
@@ -105,7 +107,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 	CURLcode res = curl_easy_perform(curl);
 	std::cout<<response;
 	if (res != CURLE_OK) {
-		curl_slist_free_all(headers);
+	
 		curl_easy_cleanup(curl);
 		throw std::runtime_error("couldnt make the request");
 
@@ -116,12 +118,14 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 		if(result.find("error")!=result.end()){
 			throw std::runtime_error(result["error"]);
 		}
+		
+		curl_easy_cleanup(curl);
 		return result;
 	}
+	return json::parse("");
 
-	// Clean up
-	curl_slist_free_all(headers);
-	curl_easy_cleanup(curl);
+
+	
 
 }
 
@@ -292,7 +296,7 @@ std::vector<std::pair<int,int>> Game::getStrategicNodes() {
 	const std::vector<int>& nodes= response["strategic_nodes"];
 	const std::vector<int>& scores= response["score"];
 	std::vector<std::pair<int, int>> result;
-	for (int i = 0; i < nodes.size(); i++) {
+	for (int i = 0; i < int(nodes.size()); i++) {
 		result.push_back({ nodes[i],scores[i] });
 		if (DEBUGMODE)
 			std::cout << nodes[i] <<":"<< scores[i]<<"   ";
