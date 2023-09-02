@@ -78,7 +78,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 	//initialized everytime to be thread safe
 	CURL* curl= curl_easy_init();
 	if(!curl){
-		throw std::runtime_error("there is something wrong with the ciurl");
+		throw std::runtime_error("there is something wrong with the curl");
 	}
 	std::string response;
 
