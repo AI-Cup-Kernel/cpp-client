@@ -105,7 +105,6 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 
 	// Perform the request
 	CURLcode res = curl_easy_perform(curl);
-	std::cout<<response;
 	if (res != CURLE_OK) {
 	
 		curl_easy_cleanup(curl);
@@ -113,6 +112,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 
 	}
 	else {
+		
 		if (DEBUGMODE)
 				std::cout << "Response: " << response << std::endl;
 			
@@ -121,6 +121,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 		if(result.find("error")!=result.end()){
 			throw std::runtime_error(result["error"]);
 		}
+		std::cout<<result["message"]<<std::endl;
 		
 		curl_easy_cleanup(curl);
 		return result;
