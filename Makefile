@@ -1,5 +1,5 @@
 # Path to libcurl directory
-path := C:/libcurl
+path := C:\Users\Geramizade\Desktop\curl-8.2.1_9-win64-mingw
 
 # C++ compiler
 CXX := g++
