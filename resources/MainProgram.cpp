@@ -6,7 +6,7 @@ Game game;
 void init() {
 	//it will be executed in a new thread once the init request arrives
 	
-	std::cout<<"init has been called"<<std::endl;
+	std::cout<<"init"<<std::endl;
 	try{
 		
 		
@@ -25,7 +25,7 @@ void init() {
 }
 void yourTurn() {
 	//it will be executed in a new thread when turn requestws arrives
-	std::cout << "yourTurn has been called" << std::endl;
+	std::cout << "turn" << std::endl;
 	try{
 		
 		
@@ -40,7 +40,7 @@ void yourTurn() {
 void end() {
 	//it will be executed in a new thread when end requestws arrives
 
-	std::cout << "end has been called" << std::endl;
+	std::cout << "end" << std::endl;
 	try{
 		//write your code here
 		
