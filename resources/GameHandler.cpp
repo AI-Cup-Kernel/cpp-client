@@ -112,7 +112,7 @@ void GameHandler::ready() {
 	std::string message;
 
 	//running server in a new thread
-	server = this->runServer("127.0.0.1", this->port, { {"/turn",handleYourTurn},{"/end",handleEnd},{"/init",handleInit}, {"/kill",handleKill} });
+	server = this->runServer(this->host.c_str(), this->port, { {"/turn",handleYourTurn},{"/end",handleEnd},{"/init",handleInit}, {"/kill",handleKill} });
 	//waits untill server is running
 	while (!server->is_running()) {
 		
