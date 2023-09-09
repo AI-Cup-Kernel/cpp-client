@@ -67,25 +67,27 @@ GameHandler::GameHandler() {
 	this->id = -1;
 	this->port = -1;
 	this->host = "127.0.0.1";
+	this->server_ip = "127.0.0.1";
 	this->server_thread = nullptr;
 
 	server_token = this->generateToken();
 	game_on = true;
 }
-GameHandler::GameHandler(std::string host,int host_port) {
+GameHandler::GameHandler(std::string host,std::string server_ip,int server_port) {
 	this->token = "";
 	this->id = -1;
 	this->port = -1;
 	this->host = host;
-	this->host_port = host_port;
+	this->server_port = server_port;
 	this->server_thread = nullptr;
+	this->server_ip=server_ip;
 	server_token = this->generateToken();
 	game_on = true;
 }
 
 bool GameHandler::begin() {
 
-	json response = this->SendloginRequest(this->host,this->host_port);
+	json response = this->SendloginRequest(this->server_ip,this->server_port);
 	if (response["status"]) {
 		if (response.find("player_id") == response.end()) {
 
@@ -121,7 +123,7 @@ void GameHandler::ready() {
 	}
 
 
-	json response = this->request(this->host, "/ready", this->host_port);
+	json response = this->request(this->server_ip, "/ready", this->server_port);
 
 	if (response["status"]) {
 
@@ -140,7 +142,7 @@ void GameHandler::ready() {
 
 int GameHandler::GetPort() { return this->port; }
 
-int GameHandler::GetHostsPort() { return this->host_port; }
+int GameHandler::GetServersPort() { return this->server_port; }
 bool GameHandler::GetGameOn() {
 	bool temp;
 	game_on_mutex.lock();

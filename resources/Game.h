@@ -19,8 +19,8 @@ public:
 	
 	//setters getters with Capital letters first
 	void SetToken(std::string token);
-	void SetHostsPort(int port);
-	void SetHost(std::string host);
+	void SetServersPort(int port);
+	void SetServer(std::string server);
 	//requests with ordinary naming
 	int getNumberOfTroopsToPut();
 	bool testServer();
@@ -52,7 +52,7 @@ private:
 		
 	struct curl_slist* headers = nullptr;
 	
-	std::string host;
+	std::string server;
 	int port;
 	std::string token;
 	json get(std::string url, std::string api, int port = 12345);

@@ -33,14 +33,14 @@ void handleInit(const httplib::Request& req, httplib::Response& res);
 //there should just be one GamHandeler
 class GameHandler {
 public:
-	GameHandler(std::string host,int host_port);
+	GameHandler(std::string host,std::string server_ip,int server_port);
 	GameHandler();
 	//initialization function
 	bool begin();
 	void ready();
 
 	int GetPort();
-	int GetHostsPort();
+	int GetServersPort();
 
 
 	std::string GetToken();
@@ -57,12 +57,12 @@ public:
 
 private:
 
-	
+	std::string server_ip;
 	std::string host;
 	std::string token;
 	int id;
 	int port;
-	int host_port;
+	int server_port;
 	std::thread* server_thread;
 	httplib::Server* runServer(const char* host, const int PORT, std::vector<std::pair<std::string, std::function<void(const httplib::Request& req, httplib::Response& res)>>> urls);
 	std::string generateToken();

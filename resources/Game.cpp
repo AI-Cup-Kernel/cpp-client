@@ -22,7 +22,7 @@ json Game::get(std::string url, std::string api, int port) {
 	std::string response;
 
 	// Construct the full URL
-	std::string fullUrl = this->host + ":" + std::to_string(this->port) + api;
+	std::string fullUrl = this->server + ":" + std::to_string(this->port) + api;
 
 	// Set the URL
 	curl_easy_setopt(curl, CURLOPT_URL, fullUrl.c_str());
@@ -83,7 +83,7 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 	std::string response;
 
 	// Set the URL
-	curl_easy_setopt(curl, CURLOPT_URL, (this->host+":"+std::to_string(this->port)+api).c_str());
+	curl_easy_setopt(curl, CURLOPT_URL, (this->server+":"+std::to_string(this->port)+api).c_str());
 	std::string body="";
 	for(auto& i :items){
 		body+=i.first;
@@ -134,11 +134,11 @@ json Game::post(std::string url, std::string api, std::vector<std::pair<std::str
 }
 
 void Game::SetToken(std::string token) { this->token = token; }
-void Game::SetHostsPort(int port) { this->port = port; }
-void Game::SetHost(std::string host) { this->host = host; }
+void Game::SetServersPort(int port) { this->port = port; }
+void Game::SetServer(std::string server) { this->server = server; }
 
 int Game::getNumberOfTroopsToPut() {
-	auto response = this->get(this->host, "/get_number_of_troops_to_put", this->port);
+	auto response = this->get(this->server, "/get_number_of_troops_to_put", this->port);
 	if (DEBUGMODE)
 		std::cout <<"number of troops:" <<response["number_of_troops"]<<std::endl;
 	return response["number_of_troops"].get<int>();
@@ -148,7 +148,7 @@ int Game::getNumberOfTroopsToPut() {
 }
 bool Game::testServer() {
 
-	auto response = this->get(this->host, "/", this->port);
+	auto response = this->get(this->server, "/", this->port);
 
 	if (response.find("message")!=response.end()) {
 		
@@ -160,7 +160,7 @@ bool Game::testServer() {
 
 }
 std::map<int, std::vector <int>> Game::getAdj() {
-	auto response = this->get(this->host, "/get_adj", this->port);
+	auto response = this->get(this->server, "/get_adj", this->port);
 	
 	std::map<int, std::vector<int>> adjacent_matrix;
 	
@@ -188,7 +188,7 @@ std::map<int, std::vector <int>> Game::getAdj() {
 	return {};
 }
 std::map<int, int> Game::getOwners() {
-	auto response = this->get(this->host, "/get_owners",  this->port);
+	auto response = this->get(this->server, "/get_owners",  this->port);
 
 	std::map<int, int> owners;
 
@@ -211,7 +211,7 @@ std::map<int, int> Game::getOwners() {
 
 }
 std::map<int, int> Game::getNumberOfTroops() {
-	auto response = this->get(this->host, "/get_troops_count", this->port);
+	auto response = this->get(this->server, "/get_troops_count", this->port);
 
 	std::map<int, int> owners;
 
@@ -235,7 +235,7 @@ std::map<int, int> Game::getNumberOfTroops() {
 }
 int Game::getState() {
 	
-	auto response = this->get(this->host, "/get_state", this->port);
+	auto response = this->get(this->server, "/get_state", this->port);
 	
 	if (DEBUGMODE)
 			std::cout << response["state"] << std::endl;
@@ -244,7 +244,7 @@ int Game::getState() {
 
 }
 int Game::getTurnNumber() {
-	auto response = this->get(this->host, "/get_turn_number", this->port);
+	auto response = this->get(this->server, "/get_turn_number", this->port);
 
 	if (DEBUGMODE)
 			std::cout << response["turn_number"] << std::endl;
@@ -253,21 +253,21 @@ int Game::getTurnNumber() {
 
 }
 void Game::nextState() {
-	auto response = this->get(this->host, "/next_state", this->port);
+	auto response = this->get(this->server, "/next_state", this->port);
 	if (DEBUGMODE)
 			std::cout <<"next state:"<< response["message"] << std::endl;
 	
 	
 }
 void Game::fort(int node,int troop_count){
-	auto response = post(this->host, "/fort", 
+	auto response = post(this->server, "/fort", 
 	{ {"node_id",std::to_string(node)}
 	,{"troop_count",std::to_string(troop_count)} }, 
 	 this->port);
 
 }
 std::map<int, int> Game::getNumberOfFortTroops(){
-	auto response = this->get(this->host, "/get_number_of_fort_troops", this->port);
+	auto response = this->get(this->server, "/get_number_of_fort_troops", this->port);
 	std::map<int, int> fort_troops;
 
 	for (const auto& item : response.items()) {
@@ -288,7 +288,7 @@ std::map<int, int> Game::getNumberOfFortTroops(){
 	
 }
 int Game::getPlayerID() {
-	auto response = this->get(this->host, "/get_player_id", this->port);
+	auto response = this->get(this->server, "/get_player_id", this->port);
 
 	if (DEBUGMODE)
 			std::cout <<"playe id:"<< response["player_id"] << std::endl;
@@ -296,7 +296,7 @@ int Game::getPlayerID() {
 
 }
 std::vector<std::pair<int,int>> Game::getStrategicNodes() {
-	auto response = this->get(this->host, "/get_strategic_nodes", this->port);
+	auto response = this->get(this->server, "/get_strategic_nodes", this->port);
 	const std::vector<int>& nodes= response["strategic_nodes"];
 	const std::vector<int>& scores= response["score"];
 	std::vector<std::pair<int, int>> result;
@@ -312,19 +312,19 @@ std::vector<std::pair<int,int>> Game::getStrategicNodes() {
 }
 void Game::putOneTroop(int node) {
 	//posting data to server
-	auto response = post(this->host, "/put_one_troop", { {"node_id",std::to_string(node)}}, this->port);
+	auto response = post(this->server, "/put_one_troop", { {"node_id",std::to_string(node)}}, this->port);
 
 
 
 }
 void Game::putTroop(int node, int number_of_troops) {
 	//posting data to server
-	auto response = post(this->host, "/put_troop", { {"node_id",std::to_string(node).c_str()},{"number_of_troops",std::to_string(number_of_troops).c_str()} }, this->port);
+	auto response = post(this->server, "/put_troop", { {"node_id",std::to_string(node).c_str()},{"number_of_troops",std::to_string(number_of_troops).c_str()} }, this->port);
 	
 }
 bool Game::attack(int origin_node, int target_node,float fraction,float move_fraction) {
 	//posting data to server
-	auto response = post(this->host, "/attack", { {"attacking_id",std::to_string(origin_node).c_str()},
+	auto response = post(this->server, "/attack", { {"attacking_id",std::to_string(origin_node).c_str()},
 		{"target_id",std::to_string(target_node)},
 		{"fraction",std::to_string(fraction)},
 		{"move_fraction", std::to_string(move_fraction)}
@@ -333,13 +333,13 @@ bool Game::attack(int origin_node, int target_node,float fraction,float move_fra
 }
 void Game::moveTroops(int origin_node, int dest_node, int number_of_troops) {
 	//posting data to server
-	auto response = post(this->host, "/move_troop", { {"source",std::to_string(origin_node).c_str()},
+	auto response = post(this->server, "/move_troop", { {"source",std::to_string(origin_node).c_str()},
 		{"destination",std::to_string(dest_node).c_str()},
 		{"troop_count",std::to_string(number_of_troops).c_str()} }, this->port);
 }
 std::vector<int> Game::getReachable(int node) {
 	//posting data to server
-	auto response = post(this->host, "/get_reachable", { {"node_id",std::to_string(node).c_str()},},  this->port);
+	auto response = post(this->server, "/get_reachable", { {"node_id",std::to_string(node).c_str()},},  this->port);
 	return response["reachable"];
 
 
