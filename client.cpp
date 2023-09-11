@@ -18,7 +18,7 @@ std::string SERVER_IP;
 extern Game game;
 
 bool readConfig(){
-	std::ifstream file("config.json"); // Open the json file
+	std::ifstream file("../config.json"); // Open the json file
     if (!file.is_open()) {
         std::cerr << "Failed to open config.json" << std::endl;
         return false;
