@@ -23,6 +23,8 @@ else
     CLEAN_COMMAND := rm -f
     # Error log redirection for Linux
     ERR_LOG := 2> ./log/error.log
+    # Create 'compile' and 'log' directories if they don't exist
+    $(shell mkdir -p ./compile ./log)
 endif
 
 # Source files
