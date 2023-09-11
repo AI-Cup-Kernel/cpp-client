@@ -3,4 +3,3 @@ resources/MainProgram.o
 client.o
 game.exe
 .vscode
-compile/main.exe
