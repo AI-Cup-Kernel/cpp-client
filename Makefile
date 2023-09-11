@@ -32,7 +32,7 @@ SRC := resources/Game.cpp resources/GameHandler.cpp resources/MainProgram.cpp cl
 OBJ := $(SRC:.cpp=.o)
 
 # Target executable
-TARGET := game
+TARGET := ./compile/main
 
 # Default target
 all: $(TARGET)
