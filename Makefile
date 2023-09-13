@@ -9,6 +9,7 @@ CXXFLAGS := -std=c++17 -Wall
 
 # Check for Windows operating system
 ifeq ($(OS),Windows_NT)
+    
     # On Windows, add -I and -L flags for libcurl
     CXXFLAGS += -I$(path)/include
     LIBS := -L$(path)/lib -lcurl -lws2_32
@@ -16,6 +17,7 @@ ifeq ($(OS),Windows_NT)
     CLEAN_COMMAND := del
     # Error log redirection (no change for Windows)
     ERR_LOG :=
+    
 else
     # On non-Windows systems, assume libcurl is available system-wide
     LIBS := -lcurl
