@@ -44,7 +44,7 @@ TARGET := ./compile/main
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS) $(ERR_LOG) $(pthread)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS) $(ERR_LOG) $(P_THREAD)
 
 # Compile source files to object files
 %.o: %.cpp
