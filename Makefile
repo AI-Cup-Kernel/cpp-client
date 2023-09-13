@@ -17,6 +17,7 @@ ifeq ($(OS),Windows_NT)
     CLEAN_COMMAND := del
     # Error log redirection (no change for Windows)
     ERR_LOG :=
+    P_THREAD :=
     
 else
     # On non-Windows systems, assume libcurl is available system-wide
@@ -27,6 +28,7 @@ else
     ERR_LOG := 2> ./log/error.log
     # Create 'compile' and 'log' directories if they don't exist
     $(shell mkdir -p ./compile ./log)
+    P_THREAD :=-pthread
 endif
 
 # Source files
@@ -42,7 +44,7 @@ TARGET := ./compile/main
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS) $(ERR_LOG)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS) $(ERR_LOG) $(pthread)
 
 # Compile source files to object files
 %.o: %.cpp
