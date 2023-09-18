@@ -6,19 +6,29 @@ CXX := g++
 
 # Compiler flags
 CXXFLAGS := -std=c++17 -Wall
-LiBS:= 
+
 # Check for Windows operating system
 ifeq ($(OS),Windows_NT)
+    
     # On Windows, add -I and -L flags for libcurl
     CXXFLAGS += -I$(path)/include
     LIBS := -L$(path)/lib -lcurl -lws2_32
     # Set clean command
     CLEAN_COMMAND := del
+    # Error log redirection (no change for Windows)
+    ERR_LOG :=
+    P_THREAD :=
+    
 else
     # On non-Windows systems, assume libcurl is available system-wide
     LIBS := -lcurl
     # Set clean command
     CLEAN_COMMAND := rm -f
+    # Error log redirection for Linux
+    ERR_LOG := 2> ./log/error.log
+    # Create 'compile' and 'log' directories if they don't exist
+    $(shell mkdir -p ./compile ./log)
+    P_THREAD :=-pthread
 endif
 
 # Source files
@@ -28,17 +38,17 @@ SRC := resources/Game.cpp resources/GameHandler.cpp resources/MainProgram.cpp cl
 OBJ := $(SRC:.cpp=.o)
 
 # Target executable
-TARGET := game
+TARGET := ./compile/main
 
 # Default target
 all: $(TARGET)
 
 $(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(TARGET) $(LIBS) $(ERR_LOG) $(P_THREAD)
 
 # Compile source files to object files
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(ERR_LOG)
 
 # Clean rule
 clean:

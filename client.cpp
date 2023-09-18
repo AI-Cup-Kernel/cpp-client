@@ -18,7 +18,7 @@ std::string SERVER_IP;
 extern Game game;
 
 bool readConfig(){
-	std::ifstream file("config.json"); // Open the json file
+	std::ifstream file("../config.json"); // Open the json file
     if (!file.is_open()) {
         std::cerr << "Failed to open config.json" << std::endl;
         return false;
@@ -48,19 +48,22 @@ int main() {
 	}
 	
 	curl_global_init(CURL_GLOBAL_DEFAULT);
-	GameHandler handeler(HOST,SERVER_IP,PORT);
+	GameHandler handler(HOST,SERVER_IP,PORT);
 	game.SetServersPort(PORT);
 	game.SetServer(SERVER_IP);
 	
-	handeler.begin();
+	if(!handler.begin()){
+		std::cerr<<"couldnt connect to server";
+		return 1;
+	}
 	
-	game.SetToken(handeler.GetToken());
+	game.SetToken(handler.GetToken());
 	game.SetClient();
-	handeler.ready();
+	handler.ready();
 	
-	while (handeler.GetGameOn());
+	while (handler.GetGameOn());
 	
-	handeler.join();
+	handler.join();
 	curl_global_cleanup();
    
    
