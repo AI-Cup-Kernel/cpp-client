@@ -344,6 +344,10 @@ std::vector<int> Game::getReachable(int node) {
 
 
 }
+void Game::printer(std::string text){
+	auto response = post(this->server, "/printer", { {"text",text.c_str()}}, this->port);
+
+}
 void Game::SetClient() {
 	
 	headers = curl_slist_append(headers, ("x-access-token: "+this->token).c_str());

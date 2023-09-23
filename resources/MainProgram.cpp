@@ -9,6 +9,7 @@ void init() {
 	std::cout<<"init"<<std::endl;
 	try{
 		//write code here
+	
 
 	}
 	catch(const std::exception& e){

@@ -39,6 +39,8 @@ public:
 	std::vector<int> getReachable(int node);
 	void SetClient();
 	void fort(int node,int troop_count);
+	void printer(std::string text);
+
 	
 	std::map<int, int>getNumberOfFortTroops();
 	
